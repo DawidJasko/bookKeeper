@@ -77,11 +77,14 @@ function storeBookmark(e) {
     url: urlValue,
   };
   bookmarks.push(bookmark);
-  console.log(JSON.stringify(bookmarks));
   localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+  fetchBookmarks();
   bookmarkForm.reset();
   websiteNameEl.focus();
 }
 
 // Event Listener
 bookmarkForm.addEventListener('submit', storeBookmark);
+
+// On Load, Fetch Bookmarks
+fetchBookmarks();
